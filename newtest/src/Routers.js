@@ -1,11 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
-import asyncComponent from './components/AsyncComponent';
+import Home from "./components/home/Home";
+import Posts from "./components/posts/Posts";
+import NotFound from "./components/notFound/NotFound";
+// import asyncComponent from './components/AsyncComponent';
 
 /* Use components to define routes */
-const AsyncHome = asyncComponent(() => import("./components/home/Home"));
-const AsyncPost = asyncComponent(() => import("./components/posts/Posts"));
-const AsyncNotFound = asyncComponent(() => import("./components/notFound/NotFound"));
 
 export default () => 
   <Router>
@@ -25,9 +25,9 @@ export default () =>
         </li>
       </ul>
       <Switch>
-        <Route path="/" exact component={AsyncHome} />
-        <Route path="/posts/:id" exact component={AsyncPost} />
-        <Route component={AsyncNotFound} />
+        <Route path="/" exact component={Home} />
+        <Route path="/posts/:id" exact component={Posts} />
+        <Route component={NotFound} />
       </Switch>
     </div>
   </Router>;
